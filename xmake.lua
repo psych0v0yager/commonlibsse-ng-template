@@ -1,11 +1,11 @@
 -- set minimum xmake version
-set_xmakever("2.7.8")
+set_xmakever("2.9.1")
 
 -- set project
 set_project("template-commonlibsse-ng")
 set_version("0.0.0")
 set_license("MIT")
-set_languages("c++20")
+set_languages("c++23")
 set_optimize("faster")
 set_warnings("allextra", "error")
 
@@ -24,8 +24,11 @@ add_rules("plugin.vsxmake.autoupdate")
 -- set policies
 set_policy("package.requires_lock", true)
 
+-- add repositories
+add_repositories("my-repo https://github.com/psych0v0yager/xmake-repo.git dev")
+
 -- require packages
-add_requires("commonlibsse-ng", { configs = { skyrim_vr = false } })
+add_requires("commonlibsse-ng 9b7c386d0355e756b4153416a76b0532f755f8de", { configs = { skyrim_vr = false }, repo = "my-repo" })
 
 -- targets
 target("template-plugin")
